@@ -46,20 +46,23 @@ const GeneratedTable = ({ onClose }) => {
         <h2 className="text-lg font-bold mb-4 text-center">Recently Generated Reports</h2>
         <div className="overflow-x-auto">
           <table className="w-full table-auto">
-            <thead>
+            <thead className='bg-gray-100'>
               <tr>
-                <th className="px-4 py-2 w-1/6 text-left">Date</th>
-                <th className="px-4 py-2 w-3/6 text-left">Report Name</th>
-                <th className="px-4 py-2 w-2/6 text-left">Download</th>
+                <th className="px-4 py-2 w-1/6 text-left text-md">Date</th>
+                <th className="px-4 py-2 w-3/6 text-left text-md">Report Name</th>
+                <th className="px-4 py-2 w-2/6 text-left text-md">Download</th>
               </tr>
             </thead>
             <tbody>
               {currentReports.map((report) => (
                 <tr key={report.id} className="hover:bg-gray-100">
-                  <td className="px-4 py-2 w-1/6 text-left">{report.date}</td>
-                  <td className="px-4 py-2 w-3/6 text-left">{report.name}</td>
-                  <td className="px-4 py-2 w-2/6 text-left">
-                    <button className="bg-blue-500 text-white px-3 py-1 rounded-lg">
+                  <td className="px-4 py-2 w-1/6 text-left text-sm">
+                    <div>{report.date.split(',')[0]}</div>
+                    <div>{report.date.split(',')[1]}</div>
+                  </td>
+                  <td className="px-4 py-2 w-3/6 text-left text-sm">{report.name}</td>
+                  <td className="px-4 py-2 w-2/6 text-left text-sm">
+                    <button className="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">
                       Download PDF
                     </button>
                   </td>
