@@ -12,7 +12,7 @@ const GeneratedTable = ({ onClose }) => {
         startDate.getTime() - i * 24 * 60 * 60 * 1000
       );
       const formattedDate = reportDate.toLocaleString();
-      const randomName = Math.random().toString(36).substring(7);
+      const randomName = generateRandomName();
       dummyData.push({
         id: i,
         date: formattedDate,
@@ -21,6 +21,17 @@ const GeneratedTable = ({ onClose }) => {
       });
     }
     return dummyData;
+  };
+
+  const generateRandomName = () => {
+    const length = Math.floor(Math.random() * 20) + 10; // Generate a random length between 10 and 30 characters
+    let name = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (let i = 0; i < length; i++) {
+      name += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return name;
   };
 
   const reports = generateDummyData(200);
@@ -49,22 +60,20 @@ const GeneratedTable = ({ onClose }) => {
   return (
     <div className="container mx-auto mt-4 bg-white shadow-md rounded-xl p-4">
       <div className="dialog-box p-4 pb-8">
-      <div className="grid grid-cols-12 justify-between items-center">
-
- <div className="col-span-10">
- <h2 className=" text-lg font-bold mb-4 text-center">
-    Recently Generated Reports
-  </h2>
- </div>
-
-  <div className="col-span-2 flex justify-end">
-    <CiFilter className="border-2 border-gray-500 text-gray-500 text-2xl rounded-md mr-2" />
-    <AiOutlineClose
-      onClick={onClose}
-      className="border-2 border-gray-500 text-gray-500 text-2xl rounded-md mr-2 cursor-pointer"
-    />
-  </div>
-</div>
+        <div className="grid grid-cols-12 justify-between items-center">
+          <div className="col-span-10">
+            <h2 className=" text-lg font-bold mb-4 text-center">
+              Recently Generated Reports
+            </h2>
+          </div>
+          <div className="col-span-2 flex justify-end">
+            <CiFilter className="border-2 border-gray-500 text-gray-500 text-2xl rounded-md mr-2" />
+            <AiOutlineClose
+              onClick={onClose}
+              className="border-2 border-gray-500 text-gray-500 text-2xl rounded-md mr-2 cursor-pointer"
+            />
+          </div>
+        </div>
 
         <div className="overflow-x-auto">
           <table className="w-full table-auto">
@@ -74,7 +83,7 @@ const GeneratedTable = ({ onClose }) => {
                 <th className="px-4 py-2 w-3/6 text-left text-md">
                   Report Name
                 </th>
-                <th className="px-4 py-2 w-2/6 text-left text-md">Download</th>
+                <th className="px-4 py-2 w-1/6 text-left text-md">Download</th>
               </tr>
             </thead>
             <tbody>
@@ -87,10 +96,7 @@ const GeneratedTable = ({ onClose }) => {
                   <td className="px-4 py-2 w-3/6 text-left text-sm">
                     {report.name}
                   </td>
-                  <td className="px-4 py-2 w-2/6 text-left text-sm">
-                    {/* <button className="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">
-                      Download PDF
-                    </button> */}
+                  <td className="px-4 py-2 w-1/6 text-left text-sm">
                     <HiOutlineFolderDownload className="text-2xl " />
                   </td>
                 </tr>
