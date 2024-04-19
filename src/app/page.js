@@ -12,13 +12,13 @@ export default function Home() {
   return (
   <div>
     <div>
-      <h1 className='text-2xl text-blue-500 font-sans font-bold p-4'>REPORT GENERATOR</h1>
+      <h1 className='text-2xl text-orange-500 font-sans font-bold p-4'>REPORT GENERATOR</h1>
     </div>
       <div className="flex h-screen justify-center items-center">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={openModal}>
+      <button className="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={openModal}>
         Generate Report
       </button>
-      {isOpen && <Modal onClose={closeModal}>{/* Render Modal conditionally */}</Modal>}
+      {isOpen && <Modal onClose={closeModal}></Modal>}
     </div>
   </div>
   );
