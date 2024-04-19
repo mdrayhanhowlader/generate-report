@@ -47,17 +47,21 @@ const GeneratedTable = ({ onClose }) => {
   let endPage = Math.min(totalPages, startPage + 4);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mt-4 bg-white shadow-md rounded-xl p-4">
       <div className="dialog-box p-4 pb-8">
-      <div className="flex justify-between items-center">
-  <h2 className="text-lg font-bold mb-4 text-center">
+      <div className="grid grid-cols-12 justify-between items-center">
+
+ <div className="col-span-10">
+ <h2 className=" text-lg font-bold mb-4 text-center">
     Recently Generated Reports
   </h2>
-  <div className="flex">
+ </div>
+
+  <div className="col-span-2 flex justify-end">
     <CiFilter className="border-2 border-gray-500 text-gray-500 text-2xl rounded-md mr-2" />
     <AiOutlineClose
       onClick={onClose}
-      className="border-2 border-gray-500 text-gray-500 text-2xl rounded-md mr-2"
+      className="border-2 border-gray-500 text-gray-500 text-2xl rounded-md mr-2 cursor-pointer"
     />
   </div>
 </div>
